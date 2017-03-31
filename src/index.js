@@ -47,13 +47,13 @@ const Todo = ({text , completed , toggleTodo , id , dispatch}) => (
 
 const VisFilter = ({visibilityFilter , dispatch}) => (
   <div>
-    <span className={visibilityFilter == "SHOW_ALL" ? "active":"" } 
+    <span className={visibilityFilter === "SHOW_ALL" ? "active":"" } 
       onClick={ () => dispatch({type:"SHOW_ALL"})}>SHOW_ALL</span> 
     &nbsp;&nbsp;|&nbsp;&nbsp; 
-    <span className={visibilityFilter == "INCOMPLETE" ? "active" : ""} 
+    <span className={visibilityFilter === "INCOMPLETE" ? "active" : ""} 
       onClick={() => dispatch({type:"INCOMPLETE"})}>INCOMPLETE</span> 
     &nbsp;&nbsp;|&nbsp;&nbsp; 
-    <span className={visibilityFilter == "COMPLETE" ? "active":""} 
+    <span className={visibilityFilter === "COMPLETE" ? "active":""} 
       onClick={() => dispatch({type:"COMPLETE"})}>COMPLETE</span>
   </div>
 )
@@ -76,9 +76,9 @@ class TodoApp extends Component{
       <button onClick={ this.addTodo }>add todo</button>
       <div>
         {this.props.todos.filter((t) =>{
-          if(this.props.visibilityFilter == 'INCOMPLETE'){
-            return t.completed == false
-          }else if(this.props.visibilityFilter == 'COMPLETE'){
+          if(this.props.visibilityFilter === 'INCOMPLETE'){
+            return !t.completed
+          }else if(this.props.visibilityFilter === 'COMPLETE'){
             return t.completed
           }else{
             return true 
